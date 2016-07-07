@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="deepbelief">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/app/libs/deepbelief.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

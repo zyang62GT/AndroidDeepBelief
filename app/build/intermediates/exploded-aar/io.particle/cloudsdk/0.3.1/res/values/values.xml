@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="api_base_uri">https://api.spark.io</string>
+    <string name="http_log_level">NONE</string>
+    <string name="oauth_client_id">spark-android-app-1234</string>
+    <string name="oauth_client_secret">d34db33f164e458fdb8daffe48b4ffe9d34db33f</string>
+</resources>
