@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\zyang_000\Documents\GitHub\IOT-Recorder\Trainer\app\src\main\AndroidManifest.xml:2:1-52:12
+ADDED from C:\Users\zyang_000\Documents\GitHub\IOT-Recorder\Trainer\app\src\main\AndroidManifest.xml:2:1-47:12
 	package
 		ADDED from C:\Users\zyang_000\Documents\GitHub\IOT-Recorder\Trainer\app\src\main\AndroidManifest.xml:3:5-30
 		INJECTED from C:\Users\zyang_000\Documents\GitHub\IOT-Recorder\Trainer\app\src\main\AndroidManifest.xml
@@ -47,15 +47,19 @@ uses-permission#android.permission.ACCESS_FINE_LOCATION
 ADDED from C:\Users\zyang_000\Documents\GitHub\IOT-Recorder\Trainer\app\src\main\AndroidManifest.xml:15:5-79
 	android:name
 		ADDED from C:\Users\zyang_000\Documents\GitHub\IOT-Recorder\Trainer\app\src\main\AndroidManifest.xml:15:22-76
+android:uses-permission#android.permission.READ_PHONE_STATE
+ADDED from C:\Users\zyang_000\Documents\GitHub\IOT-Recorder\Trainer\app\src\main\AndroidManifest.xml:17:5-83
+	android:name
+		ADDED from C:\Users\zyang_000\Documents\GitHub\IOT-Recorder\Trainer\app\src\main\AndroidManifest.xml:17:30-80
 application
-ADDED from C:\Users\zyang_000\Documents\GitHub\IOT-Recorder\Trainer\app\src\main\AndroidManifest.xml:21:5-50:19
+ADDED from C:\Users\zyang_000\Documents\GitHub\IOT-Recorder\Trainer\app\src\main\AndroidManifest.xml:22:5-45:19
 MERGED from [com.android.support:appcompat-v7:19.1.0] C:\Users\zyang_000\Documents\GitHub\IOT-Recorder\Trainer\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\19.1.0\AndroidManifest.xml:19:5-20
 	android:label
-		ADDED from C:\Users\zyang_000\Documents\GitHub\IOT-Recorder\Trainer\app\src\main\AndroidManifest.xml:23:9-41
+		ADDED from C:\Users\zyang_000\Documents\GitHub\IOT-Recorder\Trainer\app\src\main\AndroidManifest.xml:24:9-41
 	android:icon
-		ADDED from C:\Users\zyang_000\Documents\GitHub\IOT-Recorder\Trainer\app\src\main\AndroidManifest.xml:22:9-45
+		ADDED from C:\Users\zyang_000\Documents\GitHub\IOT-Recorder\Trainer\app\src\main\AndroidManifest.xml:23:9-45
 activity#com.example.cam.CamTestActivity
-ADDED from C:\Users\zyang_000\Documents\GitHub\IOT-Recorder\Trainer\app\src\main\AndroidManifest.xml:25:9-28:69
+ADDED from C:\Users\zyang_000\Documents\GitHub\IOT-Recorder\Trainer\app\src\main\AndroidManifest.xml:25:9-28:60
 	android:screenOrientation
 		ADDED from C:\Users\zyang_000\Documents\GitHub\IOT-Recorder\Trainer\app\src\main\AndroidManifest.xml:28:13-57
 	android:label
@@ -63,32 +67,36 @@ ADDED from C:\Users\zyang_000\Documents\GitHub\IOT-Recorder\Trainer\app\src\main
 	android:name
 		ADDED from C:\Users\zyang_000\Documents\GitHub\IOT-Recorder\Trainer\app\src\main\AndroidManifest.xml:26:13-44
 activity#com.example.cam.NameActivity
-ADDED from C:\Users\zyang_000\Documents\GitHub\IOT-Recorder\Trainer\app\src\main\AndroidManifest.xml:31:9-50
+ADDED from C:\Users\zyang_000\Documents\GitHub\IOT-Recorder\Trainer\app\src\main\AndroidManifest.xml:29:9-50
 	android:name
-		ADDED from C:\Users\zyang_000\Documents\GitHub\IOT-Recorder\Trainer\app\src\main\AndroidManifest.xml:31:19-47
+		ADDED from C:\Users\zyang_000\Documents\GitHub\IOT-Recorder\Trainer\app\src\main\AndroidManifest.xml:29:19-47
 activity#com.example.cam.StartActivity
-ADDED from C:\Users\zyang_000\Documents\GitHub\IOT-Recorder\Trainer\app\src\main\AndroidManifest.xml:34:9-40:20
+ADDED from C:\Users\zyang_000\Documents\GitHub\IOT-Recorder\Trainer\app\src\main\AndroidManifest.xml:30:9-36:20
 	android:name
-		ADDED from C:\Users\zyang_000\Documents\GitHub\IOT-Recorder\Trainer\app\src\main\AndroidManifest.xml:34:19-48
+		ADDED from C:\Users\zyang_000\Documents\GitHub\IOT-Recorder\Trainer\app\src\main\AndroidManifest.xml:30:19-48
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from C:\Users\zyang_000\Documents\GitHub\IOT-Recorder\Trainer\app\src\main\AndroidManifest.xml:35:13-39:29
+ADDED from C:\Users\zyang_000\Documents\GitHub\IOT-Recorder\Trainer\app\src\main\AndroidManifest.xml:31:13-35:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\zyang_000\Documents\GitHub\IOT-Recorder\Trainer\app\src\main\AndroidManifest.xml:36:17-69
+ADDED from C:\Users\zyang_000\Documents\GitHub\IOT-Recorder\Trainer\app\src\main\AndroidManifest.xml:32:17-69
 	android:name
-		ADDED from C:\Users\zyang_000\Documents\GitHub\IOT-Recorder\Trainer\app\src\main\AndroidManifest.xml:36:25-66
+		ADDED from C:\Users\zyang_000\Documents\GitHub\IOT-Recorder\Trainer\app\src\main\AndroidManifest.xml:32:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\zyang_000\Documents\GitHub\IOT-Recorder\Trainer\app\src\main\AndroidManifest.xml:38:17-77
+ADDED from C:\Users\zyang_000\Documents\GitHub\IOT-Recorder\Trainer\app\src\main\AndroidManifest.xml:34:17-77
 	android:name
-		ADDED from C:\Users\zyang_000\Documents\GitHub\IOT-Recorder\Trainer\app\src\main\AndroidManifest.xml:38:27-74
+		ADDED from C:\Users\zyang_000\Documents\GitHub\IOT-Recorder\Trainer\app\src\main\AndroidManifest.xml:34:27-74
 activity#com.example.cam.LearnActivity
-ADDED from C:\Users\zyang_000\Documents\GitHub\IOT-Recorder\Trainer\app\src\main\AndroidManifest.xml:43:9-48:20
+ADDED from C:\Users\zyang_000\Documents\GitHub\IOT-Recorder\Trainer\app\src\main\AndroidManifest.xml:37:9-43:20
 	android:parentActivityName
-		ADDED from C:\Users\zyang_000\Documents\GitHub\IOT-Recorder\Trainer\app\src\main\AndroidManifest.xml:44:13-70
+		ADDED from C:\Users\zyang_000\Documents\GitHub\IOT-Recorder\Trainer\app\src\main\AndroidManifest.xml:39:13-55
 	android:name
-		ADDED from C:\Users\zyang_000\Documents\GitHub\IOT-Recorder\Trainer\app\src\main\AndroidManifest.xml:43:19-48
+		ADDED from C:\Users\zyang_000\Documents\GitHub\IOT-Recorder\Trainer\app\src\main\AndroidManifest.xml:38:13-42
 meta-data#android.support.PARENT_ACTIVITY
-ADDED from C:\Users\zyang_000\Documents\GitHub\IOT-Recorder\Trainer\app\src\main\AndroidManifest.xml:45:13-47:64
+ADDED from C:\Users\zyang_000\Documents\GitHub\IOT-Recorder\Trainer\app\src\main\AndroidManifest.xml:40:13-42:64
 	android:value
-		ADDED from C:\Users\zyang_000\Documents\GitHub\IOT-Recorder\Trainer\app\src\main\AndroidManifest.xml:47:17-61
+		ADDED from C:\Users\zyang_000\Documents\GitHub\IOT-Recorder\Trainer\app\src\main\AndroidManifest.xml:42:17-61
 	android:name
-		ADDED from C:\Users\zyang_000\Documents\GitHub\IOT-Recorder\Trainer\app\src\main\AndroidManifest.xml:46:17-63
+		ADDED from C:\Users\zyang_000\Documents\GitHub\IOT-Recorder\Trainer\app\src\main\AndroidManifest.xml:41:17-63
+activity#com.example.cam.PredictActivity
+ADDED from C:\Users\zyang_000\Documents\GitHub\IOT-Recorder\Trainer\app\src\main\AndroidManifest.xml:44:9-62
+	android:name
+		ADDED from C:\Users\zyang_000\Documents\GitHub\IOT-Recorder\Trainer\app\src\main\AndroidManifest.xml:44:19-50

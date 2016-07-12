@@ -51,7 +51,6 @@ import com.sun.jna.ptr.IntByReference;
 import com.sun.jna.ptr.PointerByReference;
 
 public class LearnActivity extends Activity {
-    //used for organizing functionality in a case based format
     String predictorName;
 
 
@@ -142,7 +141,6 @@ public class LearnActivity extends Activity {
         }catch (Exception e){
             e.printStackTrace();
         }
-        //JPCNNLibrary.INSTANCE.jpcnn_save_predictor(preFile, predictor);
         Log.i("prediction file", preFile);
         String newFile = "newFile";
         File gtem = new File(getDir(newFile),predictorName.trim()+".txt");
@@ -152,7 +150,6 @@ public class LearnActivity extends Activity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        //state = state.ePredicting;
         if(camera != null) {
             camera.stopPreview();
             preview.setCamera(null);
@@ -169,9 +166,6 @@ public class LearnActivity extends Activity {
 
 
     public File getDir(String albumName) {
-        // Get the directory for the app's private pictures directory.
-        //File file = new File(Environment.getExternalStoragePublicDirectory(
-        //		Environment.DIRECTORY_DOWNLOADS), albumName);
         File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS),albumName);
         if (!file.mkdirs()) {
             Log.e("LOG_TAG", "Directory not created");
@@ -317,32 +311,12 @@ public class LearnActivity extends Activity {
 
         Pointer predictionsValuesPointer = predictionsValuesRef.getValue();
         final int predictionsLength = predictionsLengthRef.getValue();
-        //Pointer predictionsNamesPointer = predictionsNamesRef.getValue();
-        //final int predictionsNamesLength = predictionsNamesLengthRef.getValue();
 
         System.err.println(String.format("predictionsLength = %d", predictionsLength));
 
         float[] predictionsValues = predictionsValuesPointer.getFloatArray(0, predictionsLength);
-        //Pointer[] predictionsNames = predictionsNamesPointer.getPointerArray(0);
-
-        //Send predictions to predictionHandler
         predictionHandler(predictionsValuesPointer, predictionsLength);
-		/*
-		ArrayList<PredictionLabel> foundLabels = new ArrayList<PredictionLabel>();
-	    for (int index = 0; index < predictionsLength; index += 1) {
-	    	final float predictionValue = predictionsValues[index];
-	    	if (predictionValue > 0.05f) {
-	    		String name = predictionsNames[index].getString(0);
-	            System.err.println(String.format("%s = %f", name, predictionValue));	    		
-	            PredictionLabel label = new PredictionLabel(name, predictionValue);
-	            foundLabels.add(label);
-	    	}
-	    }
-	    Collections.sort(foundLabels);
-	    String labelsText = "";
-	    for (PredictionLabel label : foundLabels) {
-	    	labelsText += String.format("%s - %.2f\n", label.name, label.predictionValue);
-	    }*/
+
         switch(state){
             case eWaiting:
                 break;

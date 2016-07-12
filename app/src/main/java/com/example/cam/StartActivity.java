@@ -20,7 +20,7 @@ public class StartActivity extends Activity {
     }
 
     public void predictClick(View view){
-        Intent intent = new Intent(this,CamTestActivity.class);
+        Intent intent = new Intent(this,PredictActivity.class);
         startActivity(intent);
 
     }
