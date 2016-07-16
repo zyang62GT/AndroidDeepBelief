@@ -169,7 +169,7 @@ public class CamTestActivity extends Activity {
 		// Get the directory for the app's private pictures directory.
 		//File file = new File(Environment.getExternalStoragePublicDirectory(
 		//		Environment.DIRECTORY_DOWNLOADS), albumName);
-		File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),albumName);
+		File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS),albumName);
 		if (!file.mkdirs()) {
 			Log.e("LOG_TAG", "Directory not created");
 		}

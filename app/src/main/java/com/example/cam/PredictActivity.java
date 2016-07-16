@@ -1,5 +1,9 @@
 package com.example.cam;
 
+/**
+ * @author Jose Davis Nidhin
+ */
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -13,7 +17,6 @@ import java.util.Collections;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -46,10 +49,16 @@ import com.sun.jna.Pointer;
 import com.sun.jna.ptr.IntByReference;
 import com.sun.jna.ptr.PointerByReference;
 
-
 public class PredictActivity extends Activity {
+    //used for organizing functionality in a case based format
 
-    private static final String TAG = "CamTestActivity";
+    String path = Environment.getExternalStorageDirectory().toString()+"/Documents/newFile";
+    //Log.d("Files", "Path: " + path);
+    File f = new File(path);
+    File file[] = f.listFiles();
+
+
+    private static final String TAG = "PredictActivity";
     Preview preview;
     Button buttonClick;
     TextView labelsView;
@@ -58,11 +67,9 @@ public class PredictActivity extends Activity {
     Activity act;
     Context ctx;
 
-
     //Pointer varaibles for jpcnn api
     Pointer networkHandle = null;
-    Pointer trainerHandle = null;
-    Pointer[] predictor = new Pointer[10];
+    Pointer[] predictors = new Pointer[10];
 
     //Limit values for predictions
     int kPosPreT = 50;
@@ -74,12 +81,32 @@ public class PredictActivity extends Activity {
     int posPreC;
     int negPreC;
 
-    float[] preVal = new float[10];
+    float[] preVals = new float[10];
     String labelsText = "";
 
 
+
+
+
+
+
+
+    public void startPre(){
+
+
+        for(int i=0;i<10;i++){
+            if(i>=file.length) break;
+            predictors[i] = JPCNNLibrary.INSTANCE.jpcnn_load_predictor(path + '/' + file[i].getName().toString());
+        }
+
+    }
+
+
+
+
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ctx = this;
         act = this;
@@ -96,7 +123,8 @@ public class PredictActivity extends Activity {
         labelsView = (TextView) findViewById(R.id.labelsView);
         labelsView.setText("");
 
-        //initDeepBelief();
+        initDeepBelief();
+        startPre();
     }
 
     @Override
@@ -207,10 +235,21 @@ public class PredictActivity extends Activity {
         System.err.println(String.format("predictionsLength = %d", predictionsLength));
 
         float[] predictionsValues = predictionsValuesPointer.getFloatArray(0, predictionsLength);
+        //Pointer[] predictionsNames = predictionsNamesPointer.getPointerArray(0);
+
+        //Send predictions to predictionHandler
         predictionHandler(predictionsValuesPointer, predictionsLength);
-        printLabels();
+        //PredictionLabel label = new PredictionLabel(file[0].getName().toString(),preVal);
+        //labelsText = String.format("%s - %.2f\n",label.name, label.predictionValue);
+        //labelsText += String.format("%s - %.2f\n",label2.name, label2.predictionValue);
+        labelsText = "";
+        for(int i=0;i<10;i++){
+            if(i>=file.length) break;
+            PredictionLabel label = new PredictionLabel(file[i].getName().toString(),preVals[i]);
 
-
+            labelsText += String.format("%s - %.2f\n",label.name, label.predictionValue);
+        }
+        labelsView.setText(labelsText);
     }
 
 
@@ -261,52 +300,24 @@ public class PredictActivity extends Activity {
         }
     }
 
-
-
-    public void listFiles(){
-        String path = Environment.getExternalStorageDirectory().toString()+"/Documents/newFile";
-        Log.d("Files", "Path: " + path);
-        File f = new File(path);
-        File file[] = f.listFiles();
-        Log.d("Files", "Size: "+ file.length);
-        for (int i=0; i < file.length; i++)
-        {
-            if(i>=10) break;
-            Log.d("Files", "FileName:" + file[i].getName());
-            predictor[i] = JPCNNLibrary.INSTANCE.jpcnn_load_predictor(path + '/' + file[i].getName().toString());
-            //preVal[i] = JPCNNLibrary.INSTANCE.jpcnn_predict(predictor[i],predictions,predictionsLength);
+    private Bitmap getBitmapFromAsset(String strName) {
+        AssetManager assetManager = getAssets();
+        InputStream istr = null;
+        try {
+            istr = assetManager.open(strName);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-
-
-
+        Bitmap bitmap = BitmapFactory.decodeStream(istr);
+        return bitmap;
     }
 
     public void predictionHandler (Pointer predictions,int predictionsLength){
-        for (int i=0; i < 10; i++)
-        {
-            if(predictor[i]==null) break;
-            preVal[i] = JPCNNLibrary.INSTANCE.jpcnn_predict(predictor[i], predictions, predictionsLength);
+
+        for(int i=0;i<10;i++){
+            if(i>=file.length) break;
+            preVals[i] = JPCNNLibrary.INSTANCE.jpcnn_predict(predictors[i],predictions,predictionsLength);
         }
+
     }
-
-    public void printLabels(){
-        String path = Environment.getExternalStorageDirectory().toString()+"/Documents/newFile";
-        Log.d("Files", "Path: " + path);
-        File f = new File(path);
-        File file[] = f.listFiles();
-        Log.d("Files", "Size: "+ file.length);
-        PredictionLabel label;
-        for (int i=0; i < file.length; i++)
-        {
-            if(i>=10) break;
-            label = new PredictionLabel(file[i].getName().toString(),preVal[i]);
-            labelsText += String.format("%s - %.2f\n", label.name, label.predictionValue);
-        }
-        labelsView.setText(labelsText);
-    }
-
-
-
-
-
 }
